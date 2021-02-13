@@ -1,0 +1,37 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>First html Template</title>
+</head>
+<body>
+<div class="container">
+<h1> Learning Spring MVC for first time</h1>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Isbn</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Title</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.getId()}">1</td>
+        <td th:text="${book.getIsbn()}">John</td>
+        <td th:text="${book.getTitle()}">Doe</td>
+        <td th:text="${book.getAuthor().getName()}">18</td>
+        <td th:text="${book.getCategory()}">john.doe@frontbackend.com</td>
+        <td th:text="${book.getPrice()}">enasolla</td>
+
+        </td>
+    </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:mem:appdb
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+server:
+  port: 8081
+  servlet:
+    register-default-servlet: true
+
+debug: true
