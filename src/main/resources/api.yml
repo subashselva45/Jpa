@@ -1,0 +1,108 @@
+swagger: "2.0"
+info:
+  description: "Simple API Documentation "
+  version: "0.0.1"
+  title: "Author API Documentation"
+basePath: "/api"
+tags:
+  - name: "author"
+    description: "Everything about your Authors"
+schemes:
+  - "http"
+paths:
+  /authors:
+    post:
+      tags:
+        - "author"
+      summary: "Add a new author to the system"
+      description: ""
+      operationId: "addAuthor"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Author DTO"
+          required: true
+          schema:
+            $ref: "#/definitions/Author"
+      responses:
+        "405":
+          description: "Invalid input"
+          schema:
+            $ref:  "#/definitions/Error"
+        "201":
+          description: "Author created Successsfully"
+          schema:
+            $ref:  "#/definitions/Author"
+    put:
+      tags:
+        - "author"
+      summary: "Update an existing author"
+      description: ""
+      operationId: "updateAuthor"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Author object that needs to be added to the system"
+          required: true
+          schema:
+            $ref: "#/definitions/Author"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "author not found"
+          schema:
+            $ref: "#/definitions/Error"
+        "405":
+          description: "Validation exception"
+    get:
+      tags:
+        - "author"
+      summary: "Finds author by tags"
+      description: "Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing."
+      operationId: "findAuthorsByTags"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Author"
+        "400":
+          description: "Invalid tag value"
+definitions:
+  Author:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: string
+        example: "Subash Selvaraj"
+      company:
+        type: string
+        example: "Pragra"
+      status:
+        type: string
+        enum: [ACTIVE, SUSPENDED,NEW]
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      createDate:
+        type: string
+        format: "date-time"
